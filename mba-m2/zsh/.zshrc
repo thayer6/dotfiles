@@ -141,3 +141,4 @@ export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 #eval "$(zoxide init zsh)"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+skip_global_compinit=1
