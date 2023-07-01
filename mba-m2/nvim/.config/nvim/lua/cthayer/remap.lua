@@ -4,6 +4,9 @@ vim.keymap.set("n", "<leader>e", ":Explore<CR>")
 
 -- s-shortcuts is for search -> without leader, directly with s
 vim.keymap.set('n', 'sb', ':Buffers<CR>')
+vim.keymap.set('n', 'Bd', ':bdelete<CR>')
+vim.keymap.set('n', '<TAB>', ':bnext<CR>')
+vim.keymap.set('n', '<S-TAB>', ':bprevious<CR>')
 vim.keymap.set('n', 's/', ':History/<CR>')
 vim.keymap.set('n', 's;', ':Commands<CR>')
 vim.keymap.set('n', 'sa', ':Ag<CR>')
