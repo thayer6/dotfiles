@@ -8,13 +8,13 @@ zdg() {
   DIR=`find * -maxdepth 0 -type d -print 2> /dev/null | fzf-tmux` \
     && cd "$DIR"
 }
-zdes() {
-  cd $HOME/zelus/esports
+zdz() {
+  cd $HOME/zelus
   DIR=`find * -maxdepth 0 -type d -print 2> /dev/null | fzf-tmux` \
     && cd "$DIR"
 }
-zdfb() {
-  cd $HOME/zelus/football
+zdes() {
+  cd $HOME/zelus/esports
   DIR=`find * -maxdepth 0 -type d -print 2> /dev/null | fzf-tmux` \
     && cd "$DIR"
 }
@@ -56,9 +56,6 @@ wpod() {
 }
 wjob() {
     watch -n $1 "kubectl get job | grep $2"
-}
-zmvbbd() {
-    kubectl port-forward svc/zelus-model-versioner -n zelus-model-versioner :80 | cloud_sql_proxy -instances=zelus-basketball-dev:us-central1:basketball-data=tcp:5432
 }
 dev-tag() {
   # Arg $1 - sport name

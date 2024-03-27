@@ -1,50 +1,23 @@
-#python 3
+# Python 3
 alias python=python3
 alias pip=pip3
-#make neovim default vim
+alias ip=ipython
+
+# R
+alias R='R --no-restore-data --no-save'
+alias r="radian"
+
+# Neovim
 export EDITOR="nvim"
 alias vim=nvim
-#This is a great way of always being sure that the ipython instance always belongs to the virtualenv's python version.
-alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
 
-alias c=clear
-
-# show hidden files by default
+# Files
 alias ll='ls -la'
-function chpwd() {
-    emulate -L zsh
-    ll
-}
+alias ls='exa'
+alias c=clear
+alias cat=bat
 
-# direnv
-alias da='direnv allow'
-alias dr='direnv reload'
-
-# Pomodoro timer
-# ->Requires brew install caarlos0/tap/timer terminal-notifier
-alias pomo_work="timer 30m && terminal-notifier -message 'Pomodoro'\
-        -title 'Work Timer is up! Take a Break 😊'\
-        -sound Crystal"
-
-alias pomo_rest="timer 10m && terminal-notifier -message 'Pomodoro'\
-        -title 'Break is over! Get back to work 😬'\
-        -sound Crystal"
-
-# that  pip install strawberry-graphql[debug-server] will not fail (square brackets are used for globbing: https://stackoverflow.com/a/30539963/5246670)
-alias pip='noglob pip'
-
-# tmux
-alias ide=~/.tmux/ide
-alias tmux-session=~/.tmux/tmux-session
-alias killtmuxsessions="tmux ls -F'#{session_name}'|egrep '^[0-9]+$'|xargs -I% tmux kill-session -t \"=%\""
-alias ta="tmux attach"
-# opening a new tmux session from current directory and name it like last part of pwd path
-alias tn='tmux new -s `eval echo $(pwd) | sed "s/.*\///"`'
-# when closing ranger it will be at the path you were
-alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
-alias r=ranger
-
-#git shortcuts
+# Git
 alias g='git'
 alias ga='git add'
 alias gp='git push'
@@ -64,13 +37,10 @@ alias gcl='git clone'
 alias gt='vim -c ":DiffviewOpen"' --diff current changes
 alias gcpr="gh pr create -w"
 alias gc="git cj -m"
-alias multipull="find . -mindepth 1 -maxdepth 1 -type d -print -exec git -C {} pull \;"
-
 alias lg=lazygit
-alias cat=bat
+alias glom="git pull origin main"
 
-
-#docker
+# Docker
 alias dkps="docker ps"
 alias dkst="docker stats"
 alias dkpsa="docker ps -a"
@@ -80,26 +50,16 @@ alias dkcpdown="docker-compose down"
 alias dkcpstart="docker-compose start"
 alias dkcpstop="docker-compose stop"
 
-# zelus specific
-# aliases
-alias ls='exa'
-alias R='R --no-restore-data --no-save'
-alias r="radian"
-alias da='direnv allow'
-alias dr='direnv reload'
-alias gprunesquashmerged='git checkout -q master && \
-    git for-each-ref refs/heads/ "--format=%(refname:short)" | \
-    while read branch; \
-    do mergeBase=$(git merge-base master $branch) && \
-        [[ $(git cherry master \
-        $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == "-"* ]] && \
-        git branch -D $branch; done'
-alias util='kubectl get nodes --no-headers | awk '\''{print $1}'\'' | xargs -I {} sh -c '\''echo {} ; kubectl describe node {} | grep Allocated -A 5 | grep -ve Event -ve Allocated -ve percent -ve -- ; echo '\'''
-alias gotosleep="pmset sleepnow"
-alias duckdb="/Applications/duckdb ; exit;"
-alias glom="git pull origin main"
+# Kubernetes
 alias ka="kubectl apply -f $1"
 alias kdj="kubectl delete job $1"
+
+# direnv
+alias da='direnv allow'
+alias dr='direnv reload'
+
+# DuckDB
+alias duckdb="/Applications/duckdb ; exit;"
 
 # terraform
 alias tf="./terraform.sh"

@@ -1,68 +1,16 @@
 export SHELL=zsh
 
-# Add Visual Studio Code (code)
-export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-
-#go path
+# go path
 export GOPATH=$HOME/.go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
-#poetry version: installed with `brew install asdf \n asdf plugin add poetry && asdf install poetry 1.2.2`
+# poetry version: installed with `brew install asdf \n asdf plugin add poetry && asdf install poetry 1.2.2`
 export PATH="$HOME/.local/bin:$PATH"
-# my shortcuts
-export git=~/Documents/git
-export de=$git/de
-export general=$git/general
-#export sspaeticom=$git/sspaeti.com
-export venvs=~/.venvs/
-#export sync=~/Simon/Sync
-#export secondbrain=/Users/sspaeti/Simon/Sync/SecondBrain/
-#export public_secondbrain=$git/sspaeti.com/second-brain-public/content
-
-
-#export areas=/Users/sspaeti/Simon/Sync/SecondBrain/⚛️\ Areas
-#export blog=/Users/sspaeti/Documents/git/sspaeti.com/sspaeti-hugo-blog
-#export hugo=$blog
-export docs=~/Documents
-#export SPARK_HOME=~/Documents/spark/spark-3.0.1-bin-hadoop3.2
-#export VS_Projects=/Users/sspaeti/Documents/VS_Projects/
-export PYSPARK_PYTHON=python3
-#export DATASETS=/Users/sspaeti/Simon/Sync/Business/13_sspaeti/Real-estate/_DATASETS
-
-#export DAGSTER_HOME=~/.dagster
 
 #vim stuff
 export MYVIMRC=~/.config/nvim/init.lua
 export VIMRC=$MYVIMRC
 export RC=$MYVIMRC
-#vim in browser
-export XDG_DATA_HOME=$HOME/.local/share/
 
-# PROTOC_HOME=/Users/zekexu/Documents/protoc
-# export PATH=$PATH:$PROTOC_HOME/bin
-
-# HADOOP_HOME=/usr/local/hadoop
-# export PATH=$PATH:$HADOOP_HOME/bin
-
-# #local hadoop
-# export HADOOP_OPTS="-Djava.library.path=${HADOOP_HOME}/lib/native"
-# export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${HADOOP_HOME}/lib/native
-# export JAVA_LIBRARY_PATH=$JAVA_LIBRARY_PATH:${HADOOP_HOME}/lib/native
-# alias hstart="/usr/local/Cellar/hadoop/3.2.1/sbin/start-all.sh"
-# alias hstop="/usr/local/Cellar/hadoop/3.2.1/sbin/stop-all.sh"
-
-#ruby
-export GEM_HOME="$HOME/.gem"
-
-# # openssl and new M1 chip
+# openssl and new M1 chip
 export PYTHON_BUILD_HOMEBREW_OPENSSL_FORMULA=openssl@3
-# #export PATH="/opt/homebrew/opt/openssl@1.1/bin:$PATH"
-# export LDFLAGS="-L $(brew --prefix openssl)/lib"
-# export CFLAGS="-I $(brew --prefix openssl)/include"
-# export CPPFLAGS="-I/opt/homebrew/opt/openssl@1.1/include"
-# export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@1.1/lib/pkgconfig"
-# export RUBY_CONFIGURE_OPTS="--with-openssl-dir=/opt/homebrew/opt/openssl@1.1"
-# 
-# # fix grpcio on M1: https://github.com/grpc/grpc/issues/30064#issuecomment-1236072966
-# export GRPC_PYTHON_BUILD_SYSTEM_OPENSSL=true 
-# export GRPC_PYTHON_BUILD_SYSTEM_ZLIB=true

@@ -3,11 +3,6 @@ return {
 
   --color theme
   { "rebelot/kanagawa.nvim", event = "VeryLazy", priority = 1000, },
-  { "AlexvZyl/nordic.nvim", event = "VeryLazy" },
-  { "navarasu/onedark.nvim", event = "VeryLazy" },
-  { "catppuccin/nvim", name = "catppuccin", event = "VeryLazy"  }, --light theme
-  { "gruvbox-community/gruvbox", event = "VeryLazy" , priority = 1000, },
-  { 'projekt0n/github-nvim-theme', event = "VeryLazy", version = "*", },
   {
     "ldelossa/gh.nvim",
     event = "VeryLazy",
@@ -29,16 +24,12 @@ return {
       { "saadparwaiz1/cmp_luasnip" },
       { "hrsh7th/cmp-nvim-lsp" },
       { "hrsh7th/cmp-nvim-lua" },
-
-      -- Snippets
-      { "L3MON4D3/LuaSnip" },
-      { "rafamadriz/friendly-snippets" },
     },
   },
   { "jalvesaq/Nvim-R" },
   { "gaalcaras/ncm-R" },
   { "dense-analysis/ale" },
-  { --doesn't work well with trouble below
+  {
      "folke/todo-comments.nvim",
      event = "VeryLazy",
      dependencies = "nvim-lua/plenary.nvim",
@@ -59,29 +50,6 @@ return {
       })
     end,
   }, --nice diagnostic errors
-  --rust
-  { "neovim/nvim-lspconfig", event = "VeryLazy" },
-  {
-    "simrat39/rust-tools.nvim",
-    event = "VeryLazy",
-    config = function()
-      local opts = {
-        tools = {
-          -- rust-tools options
-        },
-        server = {
-          on_attach = function(_, bufnr)
-            -- Hover actions
-            vim.keymap.set("n", "<C-space>", require("rust-tools").hover_actions.hover_actions, { buffer = bufnr })
-            -- Code action groups
-            vim.keymap.set("n", "<Leader>a", require("rust-tools").code_action_group.code_action_group, { buffer = bufnr })
-          end,
-        }, -- rust-analyser options
-      }
-      require("rust-tools").setup(opts)
-    end,
-    ft = { "rust", "rs" },
-  },
   --'puremourning/vimspector', --debugging in vim
   { "akinsho/bufferline.nvim", dependencies = "nvim-tree/nvim-web-devicons", event = "VeryLazy" },
   -- 'simrat39/symbols-outline.nvim',
@@ -127,9 +95,6 @@ return {
       "nvim-treesitter/nvim-treesitter-textobjects",
       "nvim-treesitter/nvim-treesitter-context", -- sticky functions
     },
-    --test
-    --test L3MON4D3
-    --make some changes
   },
 
   -- 'psf/black',
@@ -203,16 +168,6 @@ return {
     end,
   },
   {
-    "github/copilot.vim",
-    event = "VeryLazy",
-    -- config = function()
-      --   require("copilot").setup {
-        --     vim.keymap.set("n", "<leader>cn", "<Plug>(copilot-next)", { noremap = true, silent = true }),
-        --     vim.keymap.set("n", "<leader>cp", "<Plug>(copilot-previous)", { noremap = true, silent = true }),
-        --     vim.keymap.set("n", "<leader>cd", "<Plug>(copilot-dismiss)", { noremap = true, silent = true })
-        --   }
-        -- end
-      },
       {
         "folke/zen-mode.nvim",
         event = "VeryLazy",
@@ -238,15 +193,6 @@ return {
           })
         end
       },
-      -- install without yarn or npm
-      {
-        "iamcco/markdown-preview.nvim",
-        event = "VeryLazy",
-        build = function()
-          vim.fn["mkdp#util#install"]()
-        end,
-      },
-
       --Markdown (or any Outline)
       { "simrat39/symbols-outline.nvim", event = "VeryLazy" },
       { "stevearc/aerial.nvim", event = "VeryLazy" },
@@ -255,58 +201,8 @@ return {
       -- (optional) recommended for syntax highlighting, folding, etc if you're not using nvim-treesitter:
       { "preservim/vim-markdown", event = "VeryLazy" },
       { "godlygeek/tabular", event = "VeryLazy" }, -- needed by 'preservim/vim-markdown'
-      { "epwalsh/obsidian.nvim", event = "VeryLazy" }, --using neovim with the Obsidian vau'
       -- 'vimwiki/vimwiki',
 
-      -- connect with Obsidian Second Brain
-      -- vim.opt.nocompatible = true --Recommende for VimWiki
-      --{
-        --	"vimwiki/vimwiki"
-        --	-- config = function()
-          --	-- 	vim.g.vimwiki_list = {
-            --	-- 		{
-              --	-- 			path = "~/Simon/Sync/SecondBrain",
-              --	-- 			syntax = "markdown",
-              --	-- 			ext = ".md",
-              --	-- 		},
-              --	-- 	}
-              --		--vim.g.vimwiki_global_ext = 0 --only mark files in the second brain as vim viki, rest are standard markdown
-              --	-- end,
-              --},
-
-              --dbt
-              -- 'lepture/vim-jinja', --needed for dbt below but errors in hugo htmls...
-              { "glench/vim-jinja2-syntax", event = "VeryLazy" },
-              { "PedramNavid/dbtpal", 
-              event = "VeryLazy",
-              config = function()
-                require("dbtpal").setup({
-              -- Path to the dbt executable
-              path_to_dbt = "dbt",
-    
-              -- Path to the dbt project, if blank, will auto-detect
-              -- using currently open buffer for all sql,yml, and md files
-              path_to_dbt_project = "",
-    
-              -- Path to dbt profiles directory
-              path_to_dbt_profiles_dir = vim.fn.expand "~/.dbt",
-    
-              -- Search for ref/source files in macros and models folders
-              extended_path_search = true,
-    
-              -- Prevent modifying sql files in target/(compiled|run) folders
-              protect_compiled_files = true
-    
-              })
-              end,
-            },
-              -- Java
-              --"mfussenegger/nvim-jdtls", --removed until https://github.com/neovim/neovim/issues/20795 is fixed
-              --use nvim in browser
-              {
-                "glacambre/firenvim",
-                build = function()
-                  vim.fn["firenvim#install"](0)
-                end,
-              },
-            }
+      { "glench/vim-jinja2-syntax", event = "VeryLazy" },
+  }
+}

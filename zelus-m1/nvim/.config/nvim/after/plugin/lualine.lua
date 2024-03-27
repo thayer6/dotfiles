@@ -39,37 +39,25 @@ local location = {
     cond = hide_in_width(40)
 }
 
-local function attached_lsp()
-    local clients = vim.lsp.get_active_clients()
-    if #clients > 0 then
-        return clients[1].name
-    end
-    return ""
-end
-
 local active_lsp = {
     attached_lsp,
     icon = ',',
     cond = function() return #vim.lsp.get_active_clients() > 0 and hide_in_width(100)() end
 }
 
---get python virtual env
-function split(input, delimiter)
-    local arr = {}
-    string.gsub(input, '[^' .. delimiter ..']+', function(w) table.insert(arr, w) end)
-    return arr
+--get pyenv virtual env
+local function get_active_pyenv()
+  local handle = io.popen("pyenv version-name")
+  local result = handle:read("*a")
+  handle:close()
+
+  -- Trim the result to remove any trailing whitespace/newline
+  result = string.gsub(result, "^%s*(.-)%s*$", "%1")
+
+  return result
 end
 
-local function get_venv()
-	local venv = vim.env.VIRTUAL_ENV
-	if venv then
-    local params = split(venv, '/')
-		return 'venv:'..params[table.getn(params)]..''
-
-	else
-		return ''
-	end
-end
+local active_pyenv = get_active_pyenv()
 
 --word per minute
 local wpm = require("wpm")
@@ -87,8 +75,8 @@ require'lualine'.setup {
     lualine_a = {'mode'},
     lualine_b = {},
     lualine_c = {branch, filename},
-    lualine_x = {wpm.historic_graph, diff, diagnostics, {get_venv, color={gui='bold'}}, filetype},
-    lualine_y = {},
+    lualine_x = {wpm.historic_graph, diff, diagnostics, {active_pyenv, color={gui='bold'}}, filetype},
+    lualine_y = {active_lsp},
     lualine_z = {progress, location}
   },
   inactive_sections = {

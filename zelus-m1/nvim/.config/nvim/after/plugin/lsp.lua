@@ -3,9 +3,11 @@ local lsp = require("lsp-zero")
 lsp.preset("recommended")
 
 lsp.ensure_installed({
-  'eslint',
-  'rust_analyzer',
-  'lua_ls',
+  'pyright', -- Python
+  'r_language_server', -- R
+  'sqls', -- SQL 
+  'eslint', -- JavaScript
+  'lua_ls', -- Lua
 })
 
 -- Fix Undefined global 'vim'
@@ -39,23 +41,12 @@ local sources = {
     { name = 'nvim_lsp' },
     { name = 'vsnip' },
     { name = 'path' },
-    { name = 'luasnip' },
-    { name = 'obsidian' },
-    { name = 'obsidian_new' },
-    { name = 'nvim_lsp:sumneko_lua' },
-    { name = 'nvim_lsp:null-ls' },
+    { name = 'buffer' },
   }
 -- disable completion with tab
 -- this helps with copilot setup
 cmp_mappings['<Tab>'] = nil
 cmp_mappings['<S-Tab>'] = nil
-
---Copilot cycle through suggestions
-vim.cmd([[
-imap <silent> <Leader>cn <Plug>(copilot-next)
-imap <silent> <Leader>cp <Plug>(copilot-previous)
-imap <silent> <Leader>cd <Plug>(copilot-dismiss)
-]])
 
 
 lsp.setup_nvim_cmp({

@@ -22,3 +22,9 @@ require('lspconfig')['pyright'].setup{
 require('lspconfig')['r_language_server'].setup{
   on_attach = on_attach,
 }
+
+-- LSP server setup for SQL
+require('lspconfig')['sqlls'].setup{
+  on_attach = on_attach,
+}
+

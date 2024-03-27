@@ -6,7 +6,7 @@ lsp.ensure_installed({
   'eslint', -- JavaScript
   'lua_ls', -- Lua
   'r_language_server', -- R
-  'sqls', -- SQL 
+  'sqlls', -- SQL 
   'pyright', -- Python
 })
 

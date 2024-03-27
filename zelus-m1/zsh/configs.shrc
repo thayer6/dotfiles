@@ -3,16 +3,6 @@ set -o vi
 #bash completion
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
-#This will create separate history files in your home directory
-#MYTTY=`tty`
-#HISTFILE=$HOME/.bash_history_`basename $MYTTY`
-
-# #allow e.g. "pip install -e .[full]" to work -> zsh uses square brackets for globbing / pattern matching.
-# #alias pip='noglob pip'
-
-#always move hidden files as well
-#shopt -s dotglob
-
 # bindkey '^r' history-incremental-search-backward
 bindkey -M viins 'jk' vi-cmd-mode
 bindkey -M viins 'kj' vi-cmd-mode
@@ -23,12 +13,8 @@ bindkey -M viins 'kj' vi-cmd-mode
 #on slow internet connection brew update takes ages. Disabling it per default here
 export HOMEBREW_NO_AUTO_UPDATE=1
 
-# . /opt/homebrew/opt/asdf/libexec/asdf.sh
-
 #add homebrew
 export PATH=/opt/homebrew/bin:$PATH
-#add rust to path
-export PATH=/Users/sspaeti/.cargo/bin:$PATH
 
 # following https://earthly.dev/blog/homebrew-on-m1/
 eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -39,25 +25,6 @@ export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 
 # add this after homebrew to use m1 /opt/homebrew before old homebrew that was in /usr/local/bin 
 export PATH="$PATH:/usr/local/bin/"
-
-#adoptopenjdk to change java versions with e.g. "jdk 11"
-jdk() {
-        version=$1
-        export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
-        java -version
- }
-
-#gradle: from: https://docs.airbyte.com/contributing-to-airbyte/developing-locally#build-with-gradle
-export GRADLE_OPTS="-Dorg.gradle.workers.max=6"
-
-# zoxide is a smarter cd command, inspired by z and autojump.
-#source ~/.dotfiles/zsh/zoxide.sh
-#eval "$(zoxide init zsh)"
-export PATH=~/.dotfiles/helpers/bin:$PATH
-
-
-#asdf
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 # zelus specific
 # direnv
