@@ -1,0 +1,7 @@
+# Git
+glogone() {
+    DEFAULT=10
+    NUM_COMMITS="${1:-$DEFAULT}"
+    git --no-pager log --oneline -n $NUM_COMMITS
+}
+

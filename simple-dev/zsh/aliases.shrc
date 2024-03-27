@@ -1,0 +1,40 @@
+# Files
+alias ll='ls -lah'
+alias cat=bat
+alias ls='exa'
+alias r="radian"
+
+# Python 3
+alias python=python3
+alias pip=pip3
+
+# NeoVim
+export EDITOR="nvim"
+alias vim=nvim
+
+# direnv
+alias da='direnv allow'
+alias dr='direnv reload'
+
+# Git
+alias g='git'
+alias ga='git add'
+alias gp='git push'
+alias gl='git log --oneline'
+alias gs='git status'
+alias gd='git diff'
+alias gdc='git diff --cached'
+alias gm='git commit -m'
+alias gma='git commit -am'
+alias gb='git branch'
+alias gco='git checkout'
+alias gra='git remote add'
+alias grr='git remote rm'
+alias gpu='git pull'
+alias gf='git fetch'
+alias gcl='git clone'
+alias gt='vim -c ":DiffviewOpen"' --diff current changes
+alias gcpr="gh pr create -w"
+alias gc="git cj -m"
+alias lg=lazygit
+alias glom="git pull origin main"

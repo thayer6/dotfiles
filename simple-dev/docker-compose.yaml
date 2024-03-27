@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  dev-env:
+    image: dev-env
+    build:
+      context: .
+    container_name: dev-env
+    stdin_open: true
+    tty: true
